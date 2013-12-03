@@ -56,5 +56,14 @@ ApplicationWindow {
             TextInputCustom { }
             TextInputCustom { }
         }
+
+        Button {
+            anchors.right: parent.right
+            text: "Start"
+            onClicked: {
+                console.log("Start clicked.")
+            }
+        }
     }
+
 }
