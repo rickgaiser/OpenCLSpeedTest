@@ -5,8 +5,8 @@ import QtQuick.Layouts 1.0
 
 ApplicationWindow {
     title: qsTr("OpenCL Speed Tester")
-    width: 640
-    height: 480
+    width: 400
+    height: 300
     Column {
         anchors.fill: parent
         spacing: 10
@@ -26,6 +26,7 @@ ApplicationWindow {
 
         TextArea {
             width: parent.width
+            height: 70
             text: "Regel 1\r\nRegel 2\r\nRegel 3"
             readOnly: true
         }
