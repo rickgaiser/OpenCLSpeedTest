@@ -2,11 +2,17 @@ import QtQuick 2.1
 import QtQuick.Controls 1.0
 import QtQuick.Window 2.0
 import QtQuick.Layouts 1.0
+import OpenCLSpeedTest 1.0
 
 ApplicationWindow {
     title: qsTr("OpenCL Speed Tester")
     width: 400
     height: 300
+
+    OpenCLData {
+        id: opencl
+    }
+
     Column {
         anchors.fill: parent
         spacing: 10
@@ -15,19 +21,17 @@ ApplicationWindow {
         ComboBox {
             width: parent.width
 
-            model: ListModel {
-                id: ddItems
-                ListElement {text: "AMD Radeon HD 5770"}
-                ListElement {text: "NVIDIA 670"}
-                ListElement {text: "Intel 3770"}
+            model: opencl.deviceList
+            onCurrentIndexChanged: {
+                opencl.deviceIndexChanged(currentIndex)
             }
-            onCurrentIndexChanged: console.debug(currentText + ", " + currentIndex)
+
         }
 
         TextArea {
             width: parent.width
             height: 70
-            text: "Regel 1\r\nRegel 2\r\nRegel 3"
+            text: opencl.deviceData
             readOnly: true
         }
 
