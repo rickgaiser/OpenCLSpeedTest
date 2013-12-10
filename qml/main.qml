@@ -2,16 +2,11 @@ import QtQuick 2.1
 import QtQuick.Controls 1.0
 import QtQuick.Window 2.0
 import QtQuick.Layouts 1.0
-import OpenCLSpeedTest 1.0
 
-ApplicationWindow {
-    title: qsTr("OpenCL Speed Tester")
+
+Item {
     width: 400
     height: 300
-
-    OpenCLData {
-        id: opencl
-    }
 
     Column {
         anchors.fill: parent
