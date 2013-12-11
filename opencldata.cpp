@@ -1,5 +1,7 @@
 #include "opencldata.h"
 
+#include <memory> // For C++11 smart pointers
+
 
 #define SUCCESS 0
 #define FAILURE 1
@@ -101,8 +103,8 @@ OpenCLData::initDeviceList()
     return FAILURE;
 
   // Get platform IDs
-  cl_platform_id * platforms = new cl_platform_id[numPlatforms];
-  status = clGetPlatformIDs(numPlatforms, platforms, NULL);
+  std::unique_ptr<cl_platform_id[]> platforms(new cl_platform_id[numPlatforms]);
+  status = clGetPlatformIDs(numPlatforms, platforms.get(), NULL);
   CL_STATUS(status, "clGetPlatformIDs");
 
   for(cl_uint i = 0; i < numPlatforms; i++)
@@ -115,8 +117,8 @@ OpenCLData::initDeviceList()
       continue;
 
     // Get device IDs
-    cl_device_id * devices = new cl_device_id[numDevices];
-    status = clGetDeviceIDs(platforms[i], CL_DEVICE_TYPE_ALL, numDevices, devices, NULL);
+    std::unique_ptr<cl_device_id[]> devices(new cl_device_id[numDevices]);
+    status = clGetDeviceIDs(platforms[i], CL_DEVICE_TYPE_ALL, numDevices, devices.get(), NULL);
     CL_STATUS(status, "clGetDeviceIDs");
 
     for(cl_uint j = 0; j < numDevices; j++)
@@ -136,9 +138,7 @@ OpenCLData::initDeviceList()
       m_deviceInfo.append(info);
       m_deviceList.append(info.name);
     }
-    delete[] devices;
   }
-  delete[] platforms;
 
   return SUCCESS;
 }

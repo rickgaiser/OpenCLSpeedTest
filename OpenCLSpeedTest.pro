@@ -21,3 +21,5 @@ INCLUDEPATH += \
 
 LIBS += \
     -lOpenCL
+
+CONFIG += c++11
