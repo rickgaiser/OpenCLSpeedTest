@@ -124,8 +124,8 @@ OpenCLData::initDeviceList()
       SDeviceInfo info;
 
       status  = clGetDeviceInfo(devices[j], CL_DEVICE_TYPE,                     sizeof(cl_device_type), &info.deviceType, NULL);
-      status |= clGetDeviceInfo(devices[j], CL_DEVICE_VENDOR,                   128,                    sTemp, NULL); info.vendor = sTemp;
-      status |= clGetDeviceInfo(devices[j], CL_DEVICE_NAME,                     128,                    sTemp, NULL); info.name = sTemp;
+      status |= clGetDeviceInfo(devices[j], CL_DEVICE_VENDOR,                   128,                    sTemp, NULL); info.vendor = QString(sTemp).trimmed();;
+      status |= clGetDeviceInfo(devices[j], CL_DEVICE_NAME,                     128,                    sTemp, NULL); info.name = QString(sTemp).trimmed();
       status |= clGetDeviceInfo(devices[j], CL_DEVICE_MAX_COMPUTE_UNITS,        sizeof(cl_uint),        &info.computeUnits, NULL);
       status |= clGetDeviceInfo(devices[j], CL_DEVICE_MAX_WORK_GROUP_SIZE,      sizeof(size_t),         (void*)&info.maxWorkGroupSize, NULL);
       status |= clGetDeviceInfo(devices[j], CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS, sizeof(cl_uint),        (void*)&info.maxDims, NULL);
