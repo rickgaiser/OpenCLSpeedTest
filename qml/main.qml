@@ -6,7 +6,7 @@ import QtQuick.Layouts 1.0
 
 Item {
     width: 400
-    height: 300
+    height: 260
 
     Column {
         anchors.fill: parent
@@ -43,25 +43,20 @@ Item {
 
             // Row 2
             Text { Layout.alignment: Qt.AlignVCenter | Qt.AlignRight; text: "Global" }
-            TextInputCustom { }
-            TextInputCustom { }
+            TextInputCustom { text: opencl.globalReadSpeed.toFixed(2) }
+            TextInputCustom { text: opencl.globalWriteSpeed.toFixed(2) }
 
             // Row 3
             Text { Layout.alignment: Qt.AlignVCenter | Qt.AlignRight; text: "Local" }
-            TextInputCustom { }
-            TextInputCustom { }
-
-            // Row 4
-            Text { Layout.alignment: Qt.AlignVCenter | Qt.AlignRight; text: "Private" }
-            TextInputCustom { }
-            TextInputCustom { }
+            TextInputCustom { text: opencl.localReadSpeed.toFixed(2) }
+            TextInputCustom { text: opencl.localWriteSpeed.toFixed(2) }
         }
 
         Button {
             anchors.right: parent.right
             text: "Start"
             onClicked: {
-                console.log("Start clicked.")
+                opencl.startTest()
             }
         }
     }

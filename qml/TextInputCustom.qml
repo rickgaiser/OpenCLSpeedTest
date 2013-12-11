@@ -5,7 +5,6 @@ import QtQuick.Controls 1.0
 TextField {
     Layout.fillWidth: true;
     Layout.minimumHeight: 30;
-    text: "40.00"
     font.bold: true
     font.pointSize: 15
     horizontalAlignment: TextInput.AlignRight

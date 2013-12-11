@@ -14,3 +14,10 @@ RESOURCES += \
 
 HEADERS += \
     opencldata.h
+
+INCLUDEPATH += \
+    /opt/AMDAPP/include \
+    /usr/local/cuda/include
+
+LIBS += \
+    -lOpenCL
